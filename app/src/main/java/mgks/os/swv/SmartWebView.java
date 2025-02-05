@@ -43,7 +43,7 @@ public class SmartWebView {
 	// URL configs
 	// IMPORTANT: FIREBASE WEBVIEW
 	// We can use this to add a persistent URL parameter to all pages inside the webview.
-	// And be able to detect the native webview.
+	// And be able to detect the native webview in GTM.
 	static String ASWV_APP_URL	  	  = "https://giovaniortolani.github.io/?nativewebview=true";	// default app URL (web or file address)
 	static String ASWV_OFFLINE_URL	  = "file:///android_asset/offline.html";	// default app address if ASWP_OFFLINE is set `true` OR ASWV_APP_URL is empty; basically a fail-safe page with no online features
 	static String ASWV_SEARCH         = "https://www.google.com/search?q=";         // search query will start by the end of the present string
@@ -80,11 +80,12 @@ public class SmartWebView {
 	static String ASWV_SHARE_URL      = ASWV_URL + "?share=";                       // URL where you process external content shared with the app
 
 	// Domains allowed to be opened inside webview
+	// IMPORTANT: FIREBASE WEBVIEW
 	static String ASWV_EXC_LIST       = "mgks.dev,mgks.github.io,github.com,giovaniortolani.github.io";       //separate domains with a comma (,)
 
 	// Custom user agent defaults
 	// IMPORTANT: FIREBASE WEBVIEW
-	// We can use the navigator.userAgent to detect the native webview.
+	// We can use the navigator.userAgent to detect the native webview in GTM.
 	static boolean POSTFIX_USER_AGENT       = true;         // set to true to append USER_AGENT_POSTFIX to user agent
 	static boolean OVERRIDE_USER_AGENT      = false;        // set to true to use USER_AGENT instead of default one
 	static String USER_AGENT_POSTFIX        = "NativeWebview"; // useful for identifying traffic, e.g. in Google Analytics

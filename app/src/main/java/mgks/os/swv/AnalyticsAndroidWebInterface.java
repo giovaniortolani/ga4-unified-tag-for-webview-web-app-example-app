@@ -161,7 +161,5 @@ public class AnalyticsAndroidWebInterface {
             default -> null; // Unknown value
         };
     }
-
-
 }
 // [END analytics_android_web_interface]

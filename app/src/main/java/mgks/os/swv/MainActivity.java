@@ -343,17 +343,17 @@ public class MainActivity extends AppCompatActivity {
 		// IMPORTANT: FIREBASE WEBVIEW
 		// Adding the Android interface to the DOM.
 		// This is a interface more leaned towards Android.
-		// It's the same as implemented here https://github.com/FirebaseExtended/analytics-webview/blob/322f8aeccbf5e2f2aac96d5c3083c8b5183f53cb/android/app/src/main/java/com/google/firebase/quickstart/analytics/webview/AnalyticsWebInterface.java#L33-L95
+		// It's the same as implemented in Google's repo https://github.com/FirebaseExtended/analytics-webview/blob/322f8aeccbf5e2f2aac96d5c3083c8b5183f53cb/android/app/src/main/java/com/google/firebase/quickstart/analytics/webview/AnalyticsWebInterface.java#L33-L95
 		//SmartWebView.asw_view.addJavascriptInterface(new AnalyticsAndroidWebInterface(this), AnalyticsAndroidWebInterface.TAG);
 
 		// IMPORTANT: FIREBASE WEBVIEW
 		// Adding the Webview interface to the DOM.
-		// This is an interface that can be used by both iOS and Android.
+		// This is a common interface that can be used by both iOS and Android, if iOS implements the same thing.
 		SmartWebView.asw_view.addJavascriptInterface(new WebviewInterface(this), WebviewInterface.TAG);
 
 		// IMPORTANT: FIREBASE WEBVIEW
 		// We can use to add a cookie to all pages inside the webview.
-		// And be able to detect the native webview.
+		// And be able to detect the native webview in GTM.
 		CookieManager cookieManager = CookieManager.getInstance();
 		cookieManager.setAcceptCookie(true);
 		String url = "https://giovaniortolani.github.io"; // Target website
@@ -573,12 +573,12 @@ public class MainActivity extends AppCompatActivity {
 		public void onPageStarted(WebView view, String url, Bitmap favicon) {
 			// IMPORTANT: FIREBASE WEBVIEW
 			// We can use this to add global variable to all pages inside the webview.
-			// And be able to detect the native webview.
+			// And be able to detect the native webview in GTM.
 			String runningInWebview = "window.runningInWebview = true;";
 			view.evaluateJavascript(runningInWebview, null);
 
 			// IMPORTANT: FIREBASE WEBVIEW
-			// Injecting the JS Handler global variable (firebaseAnalyticsHandler) here.
+			// Injecting the Javascript Handler global variable (firebaseAnalyticsHandler).
 			String firebaseAnalyticsHandler = "(()=>{try{const enableLog=!0,logPrefix='[GA4 Unified Tag for Webview (Web & App) | Firebase Analytics Handler Global Variable Initialization] |';const firebaseAnalyticsHandlerName='firebaseAnalyticsHandler';window[firebaseAnalyticsHandlerName]=window[firebaseAnalyticsHandlerName]||{androidInterfaceName:'AnalyticsWebInterface',iOSInterfaceName:'firebase',commonInterfaceName:'',_callNativeMethod(command,params){const androidInterface=window[this.androidInterfaceName];const iOSInterface=window.webkit?.messageHandlers?.[this.iOSInterfaceName];const commonInterface=this.commonInterfaceName&&this.commonInterfaceName.split('.').reduce((obj,key)=>obj?.[key],window);enableLog&&console.log(logPrefix,'interface: ',{iOSInterface,androidInterface,commonInterface});enableLog&&console.log(logPrefix,'command and params: ',{command,params});try{if(androidInterface){const androidMethodMap={logEvent:(name,params)=>androidInterface.logEvent(name,JSON.stringify(params)),setUserProperty:(name,value)=>androidInterface.setUserProperty(name,value),setDefaultEventParameters:(params)=>androidInterface.setDefaultEventParameters(JSON.stringify(params)),setUserId:(userId)=>androidInterface.setUserId(userId),setAnalyticsCollectionEnabled:(value)=>androidInterface.setAnalyticsCollectionEnabled(value),resetAnalyticsData:()=>androidInterface.resetAnalyticsData(),setConsent:(consentSettings)=>androidInterface.setConsent(JSON.stringify(consentSettings))};if(androidMethodMap[command]){androidMethodMap[command](...Object.values(params||{}))}}else if(iOSInterface){const message={command,...params};iOSInterface.postMessage(message)}else if(commonInterface){const message={command,...params};commonInterface(JSON.stringify(message))}else{enableLog&&console.log(logPrefix,'No native APIs found.')}}catch(e){enableLog&&console.log(logPrefix,e)}},logEvent(name,params){if(!name)return;this._callNativeMethod('logEvent',{name,parameters:params})},setUserProperty(name,value){if(!name||value===undefined)return;this._callNativeMethod('setUserProperty',{name,value})},setDefaultEventParameters(params){if(!params)return;this._callNativeMethod('setDefaultEventParameters',{parameters:params})},setUserId(userId){if(userId===undefined)return;this._callNativeMethod('setUserId',{userId})},setAnalyticsCollectionEnabled(value){if(typeof value!=='boolean')return;this._callNativeMethod('setAnalyticsCollectionEnabled',{value})},resetAnalyticsData(){this._callNativeMethod('resetAnalyticsData')},setConsent(consentSettings){if(!consentSettings)return;this._callNativeMethod('setConsent',{consentSettings})}};enableLog&&console.log(logPrefix,'Initialized global object.')}catch(e){}})()";
 			view.evaluateJavascript(firebaseAnalyticsHandler, null);
 		}
@@ -608,7 +608,7 @@ public class MainActivity extends AppCompatActivity {
 				if (url.matches("^(https?|file)://.*$")) {
 					// IMPORTANT: FIREBASE WEBVIEW
 					// We can use this to add a persistent URL parameter to all pages inside the webview.
-					// And be able to detect the native webview.
+					// And be able to detect the native webview in GTM.
 					Uri uri = request.getUrl();
 					Uri newUri = uri.buildUpon()
 							.appendQueryParameter("nativewebview", "true") // Add persistent param
