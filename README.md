@@ -35,7 +35,7 @@ Project is built on Android Studio and requires minimum Android API 23+ (6.0 Mar
 1. **Download project files**
     * Clone the project (may include untested changes)
 
-        `git clone [https://github.com/mgks/Android-SmartWebView](https://github.com/giovaniortolani/ga4-unified-tag-for-webview-web-app-example-app)`
+        `git clone https://github.com/giovaniortolani/ga4-unified-tag-for-webview-web-app-example-app`
 
 2. **(Important) Download `google-services.json` file from Firebase** ([instructions](#firebase-cloud-messaging))
 
