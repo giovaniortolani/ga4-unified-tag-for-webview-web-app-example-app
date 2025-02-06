@@ -19,7 +19,7 @@ This sample app used the [Android Smart WebView](https://github.com/mgks/Android
 
 ## Getting Started
 
-These instructions will help you get your Smart WebView copy up and running on your local machine for development and testing purposes.
+These instructions will help you get your app copy up and running on your local machine for development and testing purposes.
 
 **[<img src="https://raw.githubusercontent.com/CLorant/readme-social-icons/main/medium/colored/youtube.svg" align="left"> Getting Started with Smart WebView (Video Tutorial)](https://www.youtube.com/watch?v=vE_GsHwspH4&list=PLUvke9lIV6YMGU5XdQ5zOtDOWxslsg6mT&pp=gAQBiAQB)**
 
@@ -56,7 +56,7 @@ For detailed configuration, check project [Documentation](https://mgks.dev/app/s
 You can set/change variables in `SmartWebView.java`.
 
 ```java
-static String ASWV_APP_URL	  	     = "https://giovaniortolani.github.io/?nativewebview=true";	// default app URL (web or file address)
+static String ASWV_APP_URL           = "https://giovaniortolani.github.io/?nativewebview=true";	// default app URL (web or file address)
 static boolean POSTFIX_USER_AGENT    = true; // set to true to append USER_AGENT_POSTFIX to user agent
 static boolean OVERRIDE_USER_AGENT   = false; // set to true to use USER_AGENT instead of default one
 static String USER_AGENT_POSTFIX     = "SWVAndroid"; // useful for identifying traffic, e.g. in Google Analytics
@@ -65,6 +65,19 @@ static String ASWV_EXC_LIST          = "mgks.dev,mgks.github.io,github.com,giova
 ```
 
 ## Everything that was added or changed for implementing the Firebase Analytics Webview Communication
-- item 1 e motivo
-- item 2 e motivo
-- item 3 e motivo
+- [The domains allowed to be opened in the webview.](https://github.com/giovaniortolani/ga4-unified-tag-for-webview-web-app-example-app/blob/master/app/src/main/java/mgks/os/swv/SmartWebView.java#L82-L84)
+- [Enabled Javascript in the webview via `.setJavaScriptEnabled()`.](https://github.com/giovaniortolani/ga4-unified-tag-for-webview-web-app-example-app/blob/master/app/src/main/java/mgks/os/swv/MainActivity.java#L297)
+- [Injected the Android Native interface to the DOM.](https://github.com/giovaniortolani/ga4-unified-tag-for-webview-web-app-example-app/blob/master/app/src/main/java/mgks/os/swv/MainActivity.java#L343-L347)
+  - [The Android Native interface definition.](https://github.com/giovaniortolani/ga4-unified-tag-for-webview-web-app-example-app/blob/master/app/src/main/java/mgks/os/swv/AnalyticsAndroidWebInterface.java)
+- [Injected the Common Native interface to the DOM.](https://github.com/giovaniortolani/ga4-unified-tag-for-webview-web-app-example-app/blob/master/app/src/main/java/mgks/os/swv/MainActivity.java#L349-L352)
+  - [The Common Native interface definition.](https://github.com/giovaniortolani/ga4-unified-tag-for-webview-web-app-example-app/blob/master/app/src/main/java/mgks/os/swv/WebviewInterface.java)
+- [Injected the Javascript Handler global variable](https://github.com/giovaniortolani/ga4-unified-tag-for-webview-web-app-example-app/blob/master/app/src/main/java/mgks/os/swv/MainActivity.java#L580-L583). Only if not using the GTM template [GA4 Unified Tag for Webview (Web & App) | Firebase Analytics Handler Global Variable Initialization](https://github.com/giovaniortolani/ga4-unified-tag-for-webview-web-app-firebase-analytics-handler-global-variable-initialization).
+
+### Webview detection options for GTM
+Below you can find a non-exhaustive list of possible options to detect the webview in GTM.
+- [Added a query parameter to the default URL to be able to detect the webview in GTM.](https://github.com/giovaniortolani/ga4-unified-tag-for-webview-web-app-example-app/blob/master/app/src/main/java/mgks/os/swv/SmartWebView.java#L44-L47)
+- [Defined a WebViewClient to override URL loading via `.setWebViewClient()`.](https://github.com/giovaniortolani/ga4-unified-tag-for-webview-web-app-example-app/blob/master/app/src/main/java/mgks/os/swv/MainActivity.java#L341)
+  - [And overrode the URL loading and handling, adding a query parameter to be able to detect the webview in GTM.](https://github.com/giovaniortolani/ga4-unified-tag-for-webview-web-app-example-app/blob/master/app/src/main/java/mgks/os/swv/MainActivity.java#L609-L618)
+- [The User Agent. Added a custom postfix to the User Agent string to be able to detect the webview in GTM.](https://github.com/giovaniortolani/ga4-unified-tag-for-webview-web-app-example-app/blob/master/app/src/main/java/mgks/os/swv/SmartWebView.java#L86-L92)
+- [Added a cookie to the top-level domain to be able to detect the webview in GTM.](https://github.com/giovaniortolani/ga4-unified-tag-for-webview-web-app-example-app/blob/master/app/src/main/java/mgks/os/swv/MainActivity.java#L354-L362)
+- [Added a global variable to the page to be able to detect the webview in GTM.](https://github.com/giovaniortolani/ga4-unified-tag-for-webview-web-app-example-app/blob/master/app/src/main/java/mgks/os/swv/MainActivity.java#L574-L578)
