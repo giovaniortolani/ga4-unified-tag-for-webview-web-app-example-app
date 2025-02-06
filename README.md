@@ -17,6 +17,9 @@
 # GA4 Unified Tag for Webview (Web & App) | Example App
 This sample app used the [Android Smart WebView](https://github.com/mgks/Android-SmartWebView) as a foundation. Please refer to the original project documentation in the URL provided.
 
+It is an educational material to show how you can integrate the GTM template [GA4 Unified Tag for Webview (Web & App) | Commands Tag](https://github.com/giovaniortolani/ga4-unified-tag-for-webview-web-app-commands-tag
+) in a real app.
+
 ## Getting Started
 
 These instructions will help you get your app copy up and running on your local machine for development and testing purposes.
