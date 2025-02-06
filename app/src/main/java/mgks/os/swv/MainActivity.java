@@ -358,10 +358,10 @@ public class MainActivity extends AppCompatActivity {
 		cookieManager.setAcceptCookie(true);
 		String url = "https://giovaniortolani.github.io"; // Target website
 		String cookieValue = "nativewebview=true; Path=/;"; // Cookie format
-	    cookieManager.setCookie(url, cookieValue);
+		cookieManager.setCookie(url, cookieValue);
 		cookieManager.flush();
 
-        // Reading incoming intents
+        	// Reading incoming intents
 		Intent read_int = getIntent();
 		Log.d("SLOG_INTENT", read_int.toUri(0));
 		String uri = read_int.getStringExtra("uri");
@@ -558,7 +558,7 @@ public class MainActivity extends AppCompatActivity {
 					// Inform the user that the feature is disabled or show a rationale
 				}
 			}
-		}else if (requestCode == SmartWebView.noti_perm) {
+		} else if (requestCode == SmartWebView.noti_perm) {
 			if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
 				// Send a test notification
 				Firebase firebase = new Firebase();
