@@ -15,10 +15,10 @@
 -->
 
 # GA4 Unified Tag for Webview (Web & App) | Example App
-This sample app used the [Android Smart WebView](https://github.com/mgks/Android-SmartWebView) as a foundation. Please refer to the original project documentation in the URL provided.
+This **example app** is based on the [Android Smart WebView](https://github.com/mgks/Android-SmartWebView) project.  
+Please refer to the original project documentation for additional details.
 
-It is an educational material to show how you can integrate the GTM template [GA4 Unified Tag for Webview (Web & App) | Commands Tag](https://github.com/giovaniortolani/ga4-unified-tag-for-webview-web-app-commands-tag
-) in a real app.
+It serves as educational material to demonstrate how to integrate the GTM template [GA4 Unified Tag for Webview (Web & App) | Commands Tag](https://github.com/giovaniortolani/ga4-unified-tag-for-webview-web-app-commands-tag) in a real app.
 
 ## Getting Started
 
@@ -37,7 +37,7 @@ Project is built on Android Studio and requires minimum Android API 23+ (6.0 Mar
 
         `git clone https://github.com/giovaniortolani/ga4-unified-tag-for-webview-web-app-example-app`
 
-2. **(Important) Download `google-services.json` file from Firebase** ([instructions](#firebase-cloud-messaging))
+2. **(Important) Download `google-services.json` file from Firebase**
 
 3. **Load project in Android Studio**
 
@@ -76,7 +76,7 @@ static String ASWV_EXC_LIST          = "mgks.dev,mgks.github.io,github.com,giova
 - [Injected the Javascript Handler global variable](https://github.com/giovaniortolani/ga4-unified-tag-for-webview-web-app-example-app/blob/master/app/src/main/java/mgks/os/swv/MainActivity.java#L580-L584). Only if not using the GTM template [GA4 Unified Tag for Webview (Web & App) | Firebase Analytics Handler Global Variable Initialization](https://github.com/giovaniortolani/ga4-unified-tag-for-webview-web-app-firebase-analytics-handler-global-variable-initialization).
 
 ### Webview detection options for GTM
-Below you can find a non-exhaustive list of possible options to detect the webview in GTM.
+Below are some options for detecting if GTM is running in a WebView:
 - [Added a query parameter to the default URL to be able to detect the webview in GTM.](https://github.com/giovaniortolani/ga4-unified-tag-for-webview-web-app-example-app/blob/master/app/src/main/java/mgks/os/swv/SmartWebView.java#L44-L47)
 - [Defined a WebViewClient to override URL loading via `.setWebViewClient()`.](https://github.com/giovaniortolani/ga4-unified-tag-for-webview-web-app-example-app/blob/master/app/src/main/java/mgks/os/swv/MainActivity.java#L341)
   - [And overrode the URL loading and handling, adding a query parameter to be able to detect the webview in GTM.](https://github.com/giovaniortolani/ga4-unified-tag-for-webview-web-app-example-app/blob/master/app/src/main/java/mgks/os/swv/MainActivity.java#L609-L618)
