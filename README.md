@@ -73,7 +73,7 @@ static String ASWV_EXC_LIST          = "mgks.dev,mgks.github.io,github.com,giova
   - [The Android Native interface definition.](https://github.com/giovaniortolani/ga4-unified-tag-for-webview-web-app-example-app/blob/master/app/src/main/java/mgks/os/swv/AnalyticsAndroidWebInterface.java)
 - [Injected the Common Native interface to the DOM.](https://github.com/giovaniortolani/ga4-unified-tag-for-webview-web-app-example-app/blob/master/app/src/main/java/mgks/os/swv/MainActivity.java#L349-L352)
   - [The Common Native interface definition.](https://github.com/giovaniortolani/ga4-unified-tag-for-webview-web-app-example-app/blob/master/app/src/main/java/mgks/os/swv/WebviewInterface.java)
-- [Injected the Javascript Handler global variable](https://github.com/giovaniortolani/ga4-unified-tag-for-webview-web-app-example-app/blob/master/app/src/main/java/mgks/os/swv/MainActivity.java#L580-L583). Only if not using the GTM template [GA4 Unified Tag for Webview (Web & App) | Firebase Analytics Handler Global Variable Initialization](https://github.com/giovaniortolani/ga4-unified-tag-for-webview-web-app-firebase-analytics-handler-global-variable-initialization).
+- [Injected the Javascript Handler global variable](https://github.com/giovaniortolani/ga4-unified-tag-for-webview-web-app-example-app/blob/master/app/src/main/java/mgks/os/swv/MainActivity.java#L580-L584). Only if not using the GTM template [GA4 Unified Tag for Webview (Web & App) | Firebase Analytics Handler Global Variable Initialization](https://github.com/giovaniortolani/ga4-unified-tag-for-webview-web-app-firebase-analytics-handler-global-variable-initialization).
 
 ### Webview detection options for GTM
 Below you can find a non-exhaustive list of possible options to detect the webview in GTM.
